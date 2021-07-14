@@ -22,10 +22,10 @@ public class WorldEngine extends JFrame {
 
         for (int x = 0; x < size; x++) {
             for (int y = 0; y < size; y++) {
-                cellsMap[x][y] = r.nextInt(100) < 90;
+                cellsMap[x][y] = r.nextInt(100) < 20;
                 JButton temporary = new JButton();
                 if(cellsMap[x][y])
-                    temporary.setBackground(Color.GREEN);
+                    temporary.setBackground(Color.RED);
                 else
                     temporary.setBackground(Color.BLACK);
 
@@ -37,7 +37,6 @@ public class WorldEngine extends JFrame {
         runtime(100);
 
         setVisible(true);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     private void runtime(int tickspeed) {
@@ -84,8 +83,8 @@ public class WorldEngine extends JFrame {
     private int countNeighbours(int x, int y) {
         int count = 0;
 
-        for (int i = x - 1; i < x + 1; i++) {
-            for (int j = y - 1; j < y + 1; j++) {
+        for (int i = x - 1; i < x + 2; i++) {
+            for (int j = y - 1; j < y + 2; j++) {
                 try {
                     if(cellsMap[i][j]) {
                         count++;
@@ -99,7 +98,6 @@ public class WorldEngine extends JFrame {
         if(cellsMap[x][y])
             count--;
 
-        System.out.println(count);
         return count;
     }
 
